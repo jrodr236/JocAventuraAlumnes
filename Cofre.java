@@ -1,10 +1,18 @@
 import java.util.ArrayList;
 
 public class Cofre {
-    private ArrayList<Item> items = new ArrayList<>();
-    private boolean obert = false;
+    private ArrayList<Item> items;
+    private boolean obert;
 
-    public void afegirItem(Item item) { items.add(item); }
+    // CONSTRUCTOR
+    public Cofre() {
+        items = new ArrayList<>();
+        obert = false;
+    }
+
+    public void afegirItem(Item item) {
+        items.add(item);
+    }
 
     public String obrir() {
         obert = true;
@@ -13,12 +21,19 @@ public class Cofre {
 
     public Item agafarItem(String nom) {
         if (!obert) return null;
-        for (Item item : items)
-            if (item.getNom().equalsIgnoreCase(nom)) { items.remove(item); return item; }
+
+        for (Item item : items) {
+            if (item.getNom().equalsIgnoreCase(nom)) {
+                items.remove(item);
+                return item;
+            }
+        }
         return null;
     }
 
-    public boolean isObert() { return obert; }
+    public boolean isObert() {
+        return obert;
+    }
 
     public String toString() {
         return obert ? "Cofre obert. Contingut: " + items : "Hi ha un cofre tancat.";
