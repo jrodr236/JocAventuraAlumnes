@@ -36,7 +36,6 @@ public class Jugador {
         }
         return null;
     }
-
     public void moureA(Direccio direccio) {
         Habitacio seguent = posicioActual.getSortida(direccio);
         if (seguent != null) {
@@ -46,5 +45,7 @@ public class Jugador {
         } else {
             System.out.println("No hi ha cap sortida en aquesta direcció!");
         }
+
+
     }
 }

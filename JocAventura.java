@@ -1,8 +1,6 @@
 import java.util.Scanner;
-
 public class JocAventura {
     private Jugador jugador;
-
     public JocAventura() {
         Habitacio entrada    = new Habitacio("Entrada del Castell", "Una porta de ferro massís bloqueja el camí enrere. Està fosc.");
         Habitacio passadis   = new Habitacio("Passadís Llarg",      "Un passadís ple de teranyines. Sents passes al fons.");
@@ -16,15 +14,12 @@ public class JocAventura {
         biblioteca.setSortida(Direccio.OEST, passadis);
         passadis.setSortida(Direccio.NORD, tencada);
         tencada.setSortida(Direccio.SUD,passadis);
-
         this.jugador = new Jugador(entrada);
     }
-
     public void executar() {
         System.out.println("BENVINGUT A L'AVENTURA TEXTUAL");
         System.out.println("Escriu 'ajuda' per veure les comandes disponibles.");
         System.out.println(jugador.getPosicioActual());
-
         try (Scanner teclat = new Scanner(System.in)) {
             boolean actiu = true;
             while (actiu) {
@@ -35,7 +30,6 @@ public class JocAventura {
             }
         }
     }
-
     private boolean executarComanda(String[] parts) {
         switch (parts[0]) {
             case "anar":
@@ -50,11 +44,9 @@ public class JocAventura {
                     System.out.println("Anar on?");
                 }
                 break;
-
             case "mirar":
                 System.out.println(jugador.getPosicioActual());
                 break;
-
             case "ajuda":
                 System.out.println("Comandes disponibles:");
                 System.out.println("  anar [direcció] - Mou-te en una direcció (nord, sud, est, oest)");
@@ -62,11 +54,9 @@ public class JocAventura {
                 System.out.println("  ajuda           - Mostra aquesta llista de comandes");
                 System.out.println("  sortir          - Acaba la partida");
                 break;
-
             case "sortir":
                 System.out.println("Fins la pròxima!");
                 return false;
-
             default:
                 System.out.println("No sé com fer això.");
                 break;
