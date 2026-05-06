@@ -13,8 +13,8 @@ public class JocAventura {
         passadis.setSortida(Direccio.SUD, entrada);
         passadis.setSortida(Direccio.EST, biblioteca);
         biblioteca.setSortida(Direccio.OEST, passadis);
-        passadis.setSortida(Direccio.OEST, fosca);
-        fosca.setSortida(Direccio.EST, passadis);
+        passadis.setSortida(Direccio.NORD, tencada);
+        tencada.setSortida(Direccio.SUD,passadis);
 
         this.jugador = new Jugador(entrada);
     }
