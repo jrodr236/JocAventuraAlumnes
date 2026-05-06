@@ -5,14 +5,17 @@ public class JocAventura {
         Habitacio entrada    = new Habitacio("Entrada del Castell", "Una porta de ferro massís bloqueja el camí enrere. Està fosc.");
         Habitacio passadis   = new Habitacio("Passadís Llarg",      "Un passadís ple de teranyines. Sents passes al fons.");
         Habitacio biblioteca = new Habitacio("Biblioteca",           "Milers de llibres vells agafen pols. Hi ha una olor dolça.");
-        Habitacio fosca = new Habitacio("Fosc",           "Timc po.");
+        Habitacio fosca = new Habitacio("Fosca",           "Timc po.");
         Habitacio tencada= new Habitacio("Tencada","Et trobas davant una porta tencada mes gran que en ratatui, veig que no poseeixes l'objecta necessari per proseguir la teva aventura, dona mitja volta i marxa");
+        Habitacio pepe = new Habitacio("El pepe", "Et trobes a EL PEPE, diga-li hola amb en EL PEPE. Hola EL PEPE. El EL PEPE et retorna el salut.");
 
         entrada.setSortida(Direccio.NORD, passadis);
         passadis.setSortida(Direccio.SUD, entrada);
         passadis.setSortida(Direccio.EST, biblioteca);
         biblioteca.setSortida(Direccio.OEST, passadis);
+        biblioteca.setSortida(Direccio.SUD, pepe);
         passadis.setSortida(Direccio.NORD, tencada);
+        passadis.setSortida(Direccio.OEST,fosca);
         tencada.setSortida(Direccio.SUD,passadis);
         this.jugador = new Jugador(entrada);
     }
