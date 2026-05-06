@@ -1,12 +1,12 @@
 public class Clau extends Item {
-    private String IdPany;
+    private String idPany;
 
     public Clau(String nom, String descripcio, boolean agafar) {
         super(nom, descripcio, agafar);
-        this.IdPany = IdPany;
+        this.idPany = idPany;
     }
 
-    public String getIdpany() {
-        return IdPany;
+    public String getidPany() {
+        return idPany;
     }
 }
