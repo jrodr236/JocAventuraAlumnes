@@ -35,6 +35,7 @@ public class JocAventura {
         }
     }
     private boolean executarComanda(String[] parts) {
+        boolean actiu = true;
         switch (parts[0]) {
             case "anar":
                 if (parts.length > 1) {
@@ -81,11 +82,12 @@ public class JocAventura {
                 break;
             case "sortir":
                 System.out.println("Fins la pròxima!");
-                return false;
+                actiu = false;
+                break;
             default:
                 System.out.println("No sé com fer això.");
                 break;
         }
-        return true;
+        return actiu;
     }
 }
