@@ -7,13 +7,12 @@ public class JocAventura {
         Habitacio biblioteca = new Habitacio("Biblioteca",           "Milers de llibres vells agafen pols. Hi ha una olor dolça.");
         Habitacio fosca = new Habitacio("Fosca",           "Timc po.");
         Habitacio tencada= new Habitacio("Tencada","Et trobas davant una porta tencada mes gran que en ratatui, veig que no poseeixes l'objecta necessari per proseguir la teva aventura, dona mitja volta i marxa");
-        Habitacio pepe = new Habitacio("El pepe", "Et trobes a EL PEPE, diga-li hola amb en EL PEPE. Hola EL PEPE. El EL PEPE et retorna el salut.");
+
 
         entrada.setSortida(Direccio.NORD, passadis);
         passadis.setSortida(Direccio.SUD, entrada);
         passadis.setSortida(Direccio.EST, biblioteca);
         biblioteca.setSortida(Direccio.OEST, passadis);
-        biblioteca.setSortida(Direccio.SUD, pepe);
         passadis.setSortida(Direccio.NORD, tencada);
         passadis.setSortida(Direccio.OEST,fosca);
         tencada.setSortida(Direccio.SUD,passadis);
