@@ -11,4 +11,8 @@ public class Llanterna extends Item {
         String estat = encesa ? "encesa" : "apagada";
         return getNom() + " (" + estat + ") - " + getDescripcio();
     }
+
+    public boolean LlanternaEncesa(){
+        return encesa;
+    }
 }

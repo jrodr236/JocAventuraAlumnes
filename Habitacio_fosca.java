@@ -21,4 +21,9 @@ public class Habitacio_fosca extends Habitacio {
     }
 
 
+
+    public void IluminarHabitacio(Item Llanterna){
+
+
+    };
 }
