@@ -28,8 +28,9 @@ public class JocAventura {
             while (actiu) {
                 System.out.print("\n> ");
                 String[] parts = teclat.nextLine().toLowerCase().trim().split("\\s+");
-                if (parts.length == 0 || parts[0].isEmpty()) continue;
-                actiu = executarComanda(parts);
+                if (parts.length > 0 && !parts[0].isEmpty()) {
+                    actiu = executarComanda(parts);
+                }
             }
         }
     }
