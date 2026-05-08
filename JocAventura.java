@@ -8,7 +8,9 @@ public class JocAventura {
         Habitacio fosca = new Habitacio("Fosca",           "Timc po.");
         Habitacio tencada= new Habitacio("Tencada","Et trobas davant una porta tencada mes gran que en ratatui, veig que no poseeixes l'objecta necessari per proseguir la teva aventura, dona mitja volta i marxa");
 
-
+        // Creem l'ítem i el posem a la biblioteca
+        Llanterna llanterna = new Llanterna();
+        biblioteca.setItem(llanterna);
         entrada.setSortida(Direccio.NORD, passadis);
         passadis.setSortida(Direccio.SUD, entrada);
         passadis.setSortida(Direccio.EST, biblioteca);
@@ -49,6 +51,27 @@ public class JocAventura {
             case "mirar":
                 System.out.println(jugador.getPosicioActual());
                 break;
+
+                // NOUS CASOS PER ALS ITEMS
+
+            case "agafar":
+                Item itemHabitacio = jugador.getPosicioActual().getItem();
+                if (itemHabitacio != null) {
+                    if (itemHabitacio.isAgafable()) {
+                        jugador.agafarItem(itemHabitacio);
+                        jugador.getPosicioActual().treureItem();
+                    } else {
+                        System.out.println("No pots agafar això, no es pot moure.");
+                    }
+                } else {
+                    System.out.println("No hi ha res aquí per agafar.");
+                }
+                break;
+
+            case "inventari":
+                jugador.mostrarInventari();
+                break;
+
             case "ajuda":
                 System.out.println("Comandes disponibles:");
                 System.out.println("  anar [direcció] - Mou-te en una direcció (nord, sud, est, oest)");
