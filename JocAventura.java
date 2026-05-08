@@ -11,6 +11,9 @@ public class JocAventura {
         Llanterna llanterna = new Llanterna();
         biblioteca.setItem(llanterna);
 
+        Clau clau = new Clau();
+        passadis.setItem(clau);
+
         entrada.setSortida(Direccio.NORD, passadis);
         passadis.setSortida(Direccio.SUD, entrada);
         passadis.setSortida(Direccio.EST, biblioteca);
