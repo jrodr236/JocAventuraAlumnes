@@ -11,6 +11,7 @@ public class JocAventura {
         // Creem l'ítem i el posem a la biblioteca
         Llanterna llanterna = new Llanterna();
         biblioteca.setItem(llanterna);
+
         entrada.setSortida(Direccio.NORD, passadis);
         passadis.setSortida(Direccio.SUD, entrada);
         passadis.setSortida(Direccio.EST, biblioteca);
@@ -78,6 +79,8 @@ public class JocAventura {
                 System.out.println("  mirar           - Observa l'habitació actual");
                 System.out.println("  ajuda           - Mostra aquesta llista de comandes");
                 System.out.println("  sortir          - Acaba la partida");
+                System.out.println("  agafar          - Agafar l'Ítem que trobis");
+                System.out.println("  inventari       - Mostrar el teu inventari d'Ítems");
                 break;
             case "sortir":
                 System.out.println("Fins la pròxima!");
