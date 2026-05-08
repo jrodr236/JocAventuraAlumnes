@@ -8,9 +8,9 @@ public class JocAventura {
         Habitacio fosca = new Habitacio("Fosca",           "Timc po.");
         Habitacio tancada= new Habitacio("Tencada","Et trobes davant una porta tancada més gran que en ratatui, veig que no posseeixes l'objecta necessari per prosseguir la teva aventura, toca el dos");
 
-        // Creem l'ítem i el posem a la biblioteca
         Llanterna llanterna = new Llanterna();
         biblioteca.setItem(llanterna);
+
         entrada.setSortida(Direccio.NORD, passadis);
         passadis.setSortida(Direccio.SUD, entrada);
         passadis.setSortida(Direccio.EST, biblioteca);
@@ -31,12 +31,14 @@ public class JocAventura {
             while (actiu) {
                 System.out.print("\n> ");
                 String[] parts = teclat.nextLine().toLowerCase().trim().split("\\s+");
-                if (parts.length == 0 || parts[0].isEmpty()) continue;
-                actiu = executarComanda(parts);
+                if (parts.length > 0 && !parts[0].isEmpty()) {
+                    actiu = executarComanda(parts);
+                }
             }
         }
     }
     private boolean executarComanda(String[] parts) {
+        boolean actiu = true;
         switch (parts[0]) {
             case "anar":
                 if (parts.length > 1) {
@@ -53,9 +55,6 @@ public class JocAventura {
             case "mirar":
                 System.out.println(jugador.getPosicioActual());
                 break;
-
-                // NOUS CASOS PER ALS ITEMS
-
             case "agafar":
                 Item itemHabitacio = jugador.getPosicioActual().getItem();
                 if (itemHabitacio != null) {
@@ -69,25 +68,26 @@ public class JocAventura {
                     System.out.println("No hi ha res aquí per agafar.");
                 }
                 break;
-
             case "inventari":
                 jugador.mostrarInventari();
                 break;
-
             case "ajuda":
                 System.out.println("Comandes disponibles:");
                 System.out.println("  anar [direcció] - Mou-te en una direcció (nord, sud, est, oest)");
                 System.out.println("  mirar           - Observa l'habitació actual");
                 System.out.println("  ajuda           - Mostra aquesta llista de comandes");
                 System.out.println("  sortir          - Acaba la partida");
+                System.out.println("  agafar          - Agafar l'Ítem que trobis");
+                System.out.println("  inventari       - Mostrar el teu inventari d'Ítems");
                 break;
             case "sortir":
                 System.out.println("Fins la pròxima!");
-                return false;
+                actiu = false;
+                break;
             default:
                 System.out.println("No sé com fer això.");
                 break;
         }
-        return true;
+        return actiu;
     }
 }
