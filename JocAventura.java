@@ -1,4 +1,6 @@
+
 import java.util.Scanner;
+
 public class JocAventura {
     private Jugador jugador;
     public JocAventura() {
@@ -10,6 +12,7 @@ public class JocAventura {
 
         // Creem l'ítem i el posem a la biblioteca
         Llanterna llanterna = new Llanterna();
+
         biblioteca.setItem(llanterna);
         entrada.setSortida(Direccio.NORD, passadis);
         passadis.setSortida(Direccio.SUD, entrada);
@@ -90,4 +93,14 @@ public class JocAventura {
         }
         return true;
     }
+
+    public boolean ActivarObjecte(Item item){
+        boolean tensObjecte = false;
+        return tensObjecte;
+
+
+    }
+
+
+
 }
