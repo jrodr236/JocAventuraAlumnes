@@ -6,6 +6,7 @@ public class Habitacio {
     private HashMap<Direccio, Habitacio> sortides;
     private Item item;
 
+
     public Habitacio(String nom, String descripcio) {
         this.nom = nom;
         this.descripcio = descripcio;
