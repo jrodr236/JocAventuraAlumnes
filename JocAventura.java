@@ -13,6 +13,11 @@ public class JocAventura {
         Habitacio biblioteca = new Habitacio("Biblioteca",           "Milers de llibres vells agafen pols. Hi ha una olor dolça.");
         Habitacio fosca = new Habitacio_fosca("Fosca",           "Timc po.",jugador);
         tencada= new HabitacioTancada("Tencada","Et trobas davant una porta tencada mes gran que en ratatui, veig que no poseeixes l'objecta necessari per proseguir la teva aventura, dona mitja volta i marxa","clau");
+        HabitacioCofre salaTresor = new HabitacioCofre(
+                "Sala del Tresor",
+                "Una habitació plena de joies i or."
+        );
+
 
 
 
@@ -27,11 +32,15 @@ public class JocAventura {
         entrada.setSortida(Direccio.NORD, passadis);
         passadis.setSortida(Direccio.SUD, entrada);
         passadis.setSortida(Direccio.EST, biblioteca);
-        biblioteca.setSortida(Direccio.OEST, passadis);
+        passadis.setSortida(Direccio.OEST, fosca);
         passadis.setSortida(Direccio.NORD, tencada);
-        passadis.setSortida(Direccio.OEST,fosca);
-        tencada.setSortida(Direccio.SUD,passadis);
-        fosca.setSortida(Direccio.EST,passadis);
+        biblioteca.setSortida(Direccio.OEST, passadis);
+        fosca.setSortida(Direccio.EST, passadis);
+        tencada.setSortida(Direccio.SUD, passadis);
+        tencada.setSortida(Direccio.NORD, passadis2);
+        passadis2.setSortida(Direccio.SUD, tencada);
+        passadis2.setSortida(Direccio.NORD, salaTresor);
+        salaTresor.setSortida(Direccio.SUD, passadis2);
     }
 
     public void executar() {
