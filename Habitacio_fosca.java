@@ -6,11 +6,13 @@ public class Habitacio_fosca extends Habitacio {
     private String descripcio;
     private HashMap<Direccio, Habitacio_fosca> sortides;
     boolean tiveus = false;
+    private Jugador jugador;
 
 
     public Habitacio_fosca(String nom, String descripcio){
         super("Habitacio fosca", "No t'hi veus. Tens po...");
         this.sortides = new HashMap<>();
+
     }
 
 
