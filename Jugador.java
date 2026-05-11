@@ -10,6 +10,7 @@ public class Jugador {
         this.inventari = new ArrayList<>();
     }
 
+
     public Habitacio getPosicioActual() { return posicioActual; }
 
     public void agafarItem(Item item) {
