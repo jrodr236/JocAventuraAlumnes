@@ -1,4 +1,6 @@
+
 import java.util.Scanner;
+
 public class JocAventura {
     private HabitacioTancada tencada;
     private Jugador jugador;
@@ -6,11 +8,13 @@ public class JocAventura {
         Habitacio entrada    = new Habitacio("Entrada del Castell", "Una porta de ferro massís bloqueja el camí enrere. Està fosc.");
         Habitacio passadis   = new Habitacio("Passadís Llarg",      "Un passadís ple de teranyines. Sents passes al fons.");
         Habitacio biblioteca = new Habitacio("Biblioteca",           "Milers de llibres vells agafen pols. Hi ha una olor dolça.");
-        Habitacio fosca = new Habitacio("Fosca",           "Timc po.");
+        Habitacio fosca = new Habitacio_fosca("Fosca",           "Timc po.");
         tencada= new HabitacioTancada("Tencada","Et trobas davant una porta tencada mes gran que en ratatui, veig que no poseeixes l'objecta necessari per proseguir la teva aventura, dona mitja volta i marxa","clau1");
+
 
         // Creem l'ítem i el posem a la biblioteca
         Llanterna llanterna = new Llanterna();
+
         biblioteca.setItem(llanterna);
 
         Clau clau = new Clau("clau1");
@@ -23,7 +27,7 @@ public class JocAventura {
         passadis.setSortida(Direccio.NORD, tencada);
         passadis.setSortida(Direccio.OEST,fosca);
         tencada.setSortida(Direccio.SUD,passadis);
-        fosca.setSortida(Direccio.SUD,passadis);
+        fosca.setSortida(Direccio.EST,passadis);
         this.jugador = new Jugador(entrada);
     }
     public void executar() {
@@ -98,4 +102,8 @@ public class JocAventura {
         }
         return actiu;
     }
+
+
+
+
 }

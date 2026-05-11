@@ -8,11 +8,14 @@ public class Habitacio_fosca extends Habitacio {
     boolean tiveus = false;
     private Jugador jugador;
 
+
     public Habitacio_fosca(String nom, String descripcio){
         super("Habitacio fosca", "No t'hi veus. Tens po...");
         this.sortides = new HashMap<>();
 
     }
+
+
 
     public void setSortida(Direccio direccio, Habitacio_fosca vei) {
         sortides.put(direccio, vei);
@@ -23,4 +26,8 @@ public class Habitacio_fosca extends Habitacio {
     }
 
 
+
+    public void IluminarHabitacio(){
+
+    };
 }
