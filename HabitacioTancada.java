@@ -5,12 +5,21 @@ public class HabitacioTancada extends Habitacio {
     private boolean oberta;
     private String idClauRequerida;
     private Item item;
+    private Clau clau;
+
     public HabitacioTancada(String nom, String descripcio, String idClauRequerida) {
         super(nom, descripcio);
         this.idClauRequerida = idClauRequerida;
         this.oberta = false;
 
     }
+
+    public Clau getClau(){
+        boolean tenirclau = false;
+
+        return clau;
+    }
+
 
     public void setItem(Item item) {
         this.item = item;
