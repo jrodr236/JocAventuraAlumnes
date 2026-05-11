@@ -1,13 +1,20 @@
 import java.util.Scanner;
 public class JocAventura {
+    private HabitacioTancada tencada;
     private Jugador jugador;
     public JocAventura() {
         Habitacio entrada    = new Habitacio("Entrada del Castell", "Una porta de ferro massís bloqueja el camí enrere. Està fosc.");
         Habitacio passadis   = new Habitacio("Passadís Llarg",      "Un passadís ple de teranyines. Sents passes al fons.");
         Habitacio biblioteca = new Habitacio("Biblioteca",           "Milers de llibres vells agafen pols. Hi ha una olor dolça.");
         Habitacio fosca = new Habitacio("Fosca",           "Timc po.");
-        Habitacio tencada= new Habitacio("Tencada","Et trobas davant una porta tencada mes gran que en ratatui, veig que no poseeixes l'objecta necessari per proseguir la teva aventura, dona mitja volta i marxa");
+        tencada= new HabitacioTancada("Tencada","Et trobas davant una porta tencada mes gran que en ratatui, veig que no poseeixes l'objecta necessari per proseguir la teva aventura, dona mitja volta i marxa","clau1");
 
+        // Creem l'ítem i el posem a la biblioteca
+        Llanterna llanterna = new Llanterna();
+        biblioteca.setItem(llanterna);
+
+        Clau clau = new Clau("clau1");
+        passadis.setItem(clau);
 
         entrada.setSortida(Direccio.NORD, passadis);
         passadis.setSortida(Direccio.SUD, entrada);
@@ -16,6 +23,7 @@ public class JocAventura {
         passadis.setSortida(Direccio.NORD, tencada);
         passadis.setSortida(Direccio.OEST,fosca);
         tencada.setSortida(Direccio.SUD,passadis);
+        fosca.setSortida(Direccio.SUD,passadis);
         this.jugador = new Jugador(entrada);
     }
     public void executar() {
@@ -33,6 +41,7 @@ public class JocAventura {
         }
     }
     private boolean executarComanda(String[] parts) {
+        boolean actiu = true;
         switch (parts[0]) {
             case "anar":
                 if (parts.length > 1) {
@@ -49,20 +58,44 @@ public class JocAventura {
             case "mirar":
                 System.out.println(jugador.getPosicioActual());
                 break;
+
+                // NOUS CASOS PER ALS ITEMS
+
+            case "agafar":
+                Item itemHabitacio = jugador.getPosicioActual().getItem();
+                if (itemHabitacio != null) {
+                    if (itemHabitacio.isAgafable()) {
+                        jugador.agafarItem(itemHabitacio);
+                        jugador.getPosicioActual().treureItem();
+                    } else {
+                        System.out.println("No pots agafar això, no es pot moure.");
+                    }
+                } else {
+                    System.out.println("No hi ha res aquí per agafar.");
+                }
+                break;
+
+            case "inventari":
+                jugador.mostrarInventari();
+                break;
+
             case "ajuda":
                 System.out.println("Comandes disponibles:");
                 System.out.println("  anar [direcció] - Mou-te en una direcció (nord, sud, est, oest)");
                 System.out.println("  mirar           - Observa l'habitació actual");
                 System.out.println("  ajuda           - Mostra aquesta llista de comandes");
                 System.out.println("  sortir          - Acaba la partida");
+                System.out.println("  agafar          - Agafar l'Ítem que trobis");
+                System.out.println("  inventari       - Mostrar el teu inventari d'Ítems");
                 break;
             case "sortir":
                 System.out.println("Fins la pròxima!");
-                return false;
+                actiu = false;
+                break;
             default:
                 System.out.println("No sé com fer això.");
                 break;
         }
-        return true;
+        return actiu;
     }
 }
