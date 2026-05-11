@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class JocAventura {
@@ -7,11 +6,10 @@ public class JocAventura {
 
     public JocAventura() {
         Habitacio entrada    = new Habitacio("Entrada del Castell", "Una porta de ferro massís bloqueja el camí enrere. Està fosc.");
-        this.jugador = new Jugador(entrada);
         Habitacio passadis   = new Habitacio("Passadís Llarg",      "Un passadís ple de teranyines. Sents passes al fons.");
         Habitacio passadis2   = new Habitacio("Passadís Curt",      "Un passadís ple de teranyines pero mes curt. Sents passes al fons, pero un fons que esta mes aprop.");
         Habitacio biblioteca = new Habitacio("Biblioteca",           "Milers de llibres vells agafen pols. Hi ha una olor dolça.");
-        Habitacio fosca = new Habitacio_fosca("Fosca",           "Timc po.",jugador);
+        Habitacio fosca = new Habitacio("Fosca",           "Tinc po.");
         tencada= new HabitacioTancada("Tencada","Et trobas davant una porta tencada mes gran que en ratatui, veig que no poseeixes l'objecta necessari per proseguir la teva aventura, dona mitja volta i marxa","clau");
         HabitacioCofre salaTresor = new HabitacioCofre(
                 "Sala del Tresor",
@@ -19,11 +17,9 @@ public class JocAventura {
         );
 
 
+        HabitacioCofre salaTresor = new HabitacioCofre("Sala del Tresor", "Una habitació plena de joies i or. Al centre hi ha un cofre daurat.");
 
-
-        // Creem l'ítem i el posem a la biblioteca
         Llanterna llanterna = new Llanterna();
-
         biblioteca.setItem(llanterna);
 
         Clau clau = new Clau("clau");
@@ -34,13 +30,17 @@ public class JocAventura {
         passadis.setSortida(Direccio.EST, biblioteca);
         passadis.setSortida(Direccio.OEST, fosca);
         passadis.setSortida(Direccio.NORD, tencada);
-        biblioteca.setSortida(Direccio.OEST, passadis);
-        fosca.setSortida(Direccio.EST, passadis);
+        passadis.setSortida(Direccio.OEST, fosca);
         tencada.setSortida(Direccio.SUD, passadis);
         tencada.setSortida(Direccio.NORD, passadis2);
-        passadis2.setSortida(Direccio.SUD, tencada);
         passadis2.setSortida(Direccio.NORD, salaTresor);
+        passadis2.setSortida(Direccio.SUD, tencada);
+        fosca.setSortida(Direccio.SUD, passadis);
+
+        passadis.setSortida(Direccio.SUD, salaTresor);
         salaTresor.setSortida(Direccio.SUD, passadis2);
+
+        this.jugador = new Jugador(entrada);
     }
 
     public void executar() {
@@ -123,15 +123,43 @@ public class JocAventura {
 
             case "sortir":
                 System.out.println("Fins la pròxima!");
-                return false;
+                actiu = false;
+                break;
+            case "usar":
+                if (parts.length > 1) {
+                    String nomItem = parts[1];
+
+                    Item item = jugador.buscarItem(nomItem);
+
+                    if (item instanceof Clau clau) {
+
+                        Habitacio actual = jugador.getPosicioActual();
+
+                        if (actual instanceof HabitacioTancada tancada) {
+
+                            if (tancada.intentarObrir(clau)) {
+                                System.out.println(" Has obert la porta!");
+                            } else {
+                                System.out.println(" Aquesta clau no funciona.");
+                            }
+
+                        } else {
+                            System.out.println("Aquí no hi ha res per obrir.");
+                        }
+
+                    } else {
+                        System.out.println("No tens aquesta clau.");
+                    }
+
+                } else {
+                    System.out.println("Què vols usar?");
+                }
+                break;
+
             default:
                 System.out.println("No sé com fer això.");
                 break;
         }
-        return true;
+        return actiu;
     }
-
-
-
-
 }
