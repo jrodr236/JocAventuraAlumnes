@@ -17,8 +17,6 @@ public class JocAventura {
         );
 
 
-        HabitacioCofre salaTresor = new HabitacioCofre("Sala del Tresor", "Una habitació plena de joies i or. Al centre hi ha un cofre daurat.");
-
         Llanterna llanterna = new Llanterna();
         biblioteca.setItem(llanterna);
 

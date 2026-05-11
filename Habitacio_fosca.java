@@ -15,7 +15,7 @@ public class Habitacio_fosca extends Habitacio {
     }
 
     public String iluminarHabitacio(Jugador jugador){
-        if (jugador.getItemInventari("Llanterna")){
+        if (jugador.GetIteminventari("Llanterna")){
             return super.toString();
         } else {
             return "---" + "---\n" +
