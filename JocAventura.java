@@ -26,7 +26,6 @@ public class JocAventura {
         biblioteca.setSortida(Direccio.OEST, passadis);
         passadis.setSortida(Direccio.NORD, tencada);
         passadis.setSortida(Direccio.OEST, fosca);
-        tencada.setSortida(Direccio.NORD, passadis2);
         tencada.setSortida(Direccio.SUD, passadis);
         passadis2.setSortida(Direccio.NORD, salaTresor);
         passadis2.setSortida(Direccio.SUD, tencada);
