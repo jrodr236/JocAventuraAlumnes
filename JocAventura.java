@@ -5,10 +5,13 @@ public class JocAventura {
     private Jugador jugador;
     public JocAventura() {
         Habitacio entrada    = new Habitacio("Entrada del Castell", "Una porta de ferro massís bloqueja el camí enrere. Està fosc.");
+        this.jugador = new Jugador(entrada);
         Habitacio passadis   = new Habitacio("Passadís Llarg",      "Un passadís ple de teranyines. Sents passes al fons.");
         Habitacio biblioteca = new Habitacio("Biblioteca",           "Milers de llibres vells agafen pols. Hi ha una olor dolça.");
-        Habitacio fosca = new Habitacio_fosca("Fosca",           "Timc po.");
+        Habitacio fosca = new Habitacio_fosca("Fosca",           "Timc po.", jugador);
         Habitacio tencada= new Habitacio("Tencada","Et trobas davant una porta tencada mes gran que en ratatui, veig que no poseeixes l'objecta necessari per proseguir la teva aventura, dona mitja volta i marxa");
+
+
 
         // Creem l'ítem i el posem a la biblioteca
         Llanterna llanterna = new Llanterna();
@@ -22,8 +25,6 @@ public class JocAventura {
         passadis.setSortida(Direccio.OEST,fosca);
         tencada.setSortida(Direccio.SUD,passadis);
         fosca.setSortida(Direccio.EST,passadis);
-
-        this.jugador = new Jugador(entrada);
     }
     public void executar() {
         System.out.println("BENVINGUT A L'AVENTURA TEXTUAL");
