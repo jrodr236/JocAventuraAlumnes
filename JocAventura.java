@@ -9,6 +9,7 @@ public class JocAventura {
         Habitacio fosca = new Habitacio("Fosca",           "Timc po.");
         tencada= new HabitacioTancada("Tencada","Et trobas davant una porta tencada mes gran que en ratatui, veig que no poseeixes l'objecta necessari per proseguir la teva aventura, dona mitja volta i marxa","clau1");
 
+        // Creem l'ítem i el posem a la biblioteca
         Llanterna llanterna = new Llanterna();
         biblioteca.setItem(llanterna);
 
@@ -22,6 +23,7 @@ public class JocAventura {
         passadis.setSortida(Direccio.NORD, tencada);
         passadis.setSortida(Direccio.OEST,fosca);
         tencada.setSortida(Direccio.SUD,passadis);
+        fosca.setSortida(Direccio.SUD,passadis);
         this.jugador = new Jugador(entrada);
     }
     public void executar() {
@@ -33,9 +35,8 @@ public class JocAventura {
             while (actiu) {
                 System.out.print("\n> ");
                 String[] parts = teclat.nextLine().toLowerCase().trim().split("\\s+");
-                if (parts.length > 0 && !parts[0].isEmpty()) {
-                    actiu = executarComanda(parts);
-                }
+                if (parts.length == 0 || parts[0].isEmpty()) continue;
+                actiu = executarComanda(parts);
             }
         }
     }
@@ -57,6 +58,9 @@ public class JocAventura {
             case "mirar":
                 System.out.println(jugador.getPosicioActual());
                 break;
+
+                // NOUS CASOS PER ALS ITEMS
+
             case "agafar":
                 Item itemHabitacio = jugador.getPosicioActual().getItem();
                 if (itemHabitacio != null) {
@@ -70,9 +74,11 @@ public class JocAventura {
                     System.out.println("No hi ha res aquí per agafar.");
                 }
                 break;
+
             case "inventari":
                 jugador.mostrarInventari();
                 break;
+
             case "ajuda":
                 System.out.println("Comandes disponibles:");
                 System.out.println("  anar [direcció] - Mou-te en una direcció (nord, sud, est, oest)");
