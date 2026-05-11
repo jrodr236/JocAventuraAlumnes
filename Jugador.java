@@ -4,12 +4,13 @@ public class Jugador {
     private Habitacio posicioActual;
     public List<Item> inventari;
 
-    public Jugador(Habitacio inici) {
-
-        this.posicioActual = inici;
+    public Jugador() {
         this.inventari = new ArrayList<>();
     }
 
+    public void setPosicioActual(Habitacio habitacioActual) {
+        this.posicioActual = habitacioActual;
+    }
 
     public Habitacio getPosicioActual() { return posicioActual; }
 

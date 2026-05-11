@@ -1,44 +1,13 @@
 import java.util.Scanner;
 
 public class JocAventura {
-    private HabitacioTancada tencada;
     private Jugador jugador;
+    private Mapa mapa;
 
     public JocAventura() {
-        Habitacio entrada    = new Habitacio("Entrada del Castell", "Una porta de ferro massís bloqueja el camí enrere. Està fosc.");
-        Habitacio passadis   = new Habitacio("Passadís Llarg",      "Un passadís ple de teranyines. Sents passes al fons.");
-        Habitacio passadis2   = new Habitacio("Passadís Curt",      "Un passadís ple de teranyines pero mes curt. Sents passes al fons, pero un fons que esta mes aprop.");
-        Habitacio biblioteca = new Habitacio("Biblioteca",           "Milers de llibres vells agafen pols. Hi ha una olor dolça.");
-        Habitacio fosca = new Habitacio("Fosca",           "Tinc po.");
-        tencada= new HabitacioTancada("Tencada","Et trobas davant una porta tencada mes gran que en ratatui, veig que no poseeixes l'objecta necessari per proseguir la teva aventura, dona mitja volta i marxa","clau");
-        HabitacioCofre salaTresor = new HabitacioCofre(
-                "Sala del Tresor",
-                "Una habitació plena de joies i or."
-        );
-
-
-        Llanterna llanterna = new Llanterna();
-        biblioteca.setItem(llanterna);
-
-        Clau clau = new Clau("clau");
-        passadis.setItem(clau);
-
-        entrada.setSortida(Direccio.NORD, passadis);
-        passadis.setSortida(Direccio.SUD, entrada);
-        passadis.setSortida(Direccio.EST, biblioteca);
-        passadis.setSortida(Direccio.OEST, fosca);
-        passadis.setSortida(Direccio.NORD, tencada);
-        passadis.setSortida(Direccio.OEST, fosca);
-        tencada.setSortida(Direccio.SUD, passadis);
-        tencada.setSortida(Direccio.NORD, passadis2);
-        passadis2.setSortida(Direccio.NORD, salaTresor);
-        passadis2.setSortida(Direccio.SUD, tencada);
-        fosca.setSortida(Direccio.SUD, passadis);
-
-        passadis.setSortida(Direccio.SUD, salaTresor);
-        salaTresor.setSortida(Direccio.SUD, passadis2);
-
-        this.jugador = new Jugador(entrada);
+        this.mapa = new Mapa();
+        this.jugador = new Jugador();
+        this.jugador.setPosicioActual(mapa.getHabitacioInicial());
     }
 
     public void executar() {
