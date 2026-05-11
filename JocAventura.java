@@ -94,12 +94,6 @@ public class JocAventura {
         return true;
     }
 
-    public boolean ActivarObjecte(Item item){
-        boolean tensObjecte = false;
-        return tensObjecte;
-
-
-    }
 
 
 
