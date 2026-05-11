@@ -36,6 +36,15 @@ public class Jugador {
         }
         return null;
     }
+
+    public boolean GetIteminventari(String nomItem){
+        for(Item i: inventari){
+            if(i.getNom().equals(nomItem)){
+                return true;
+            }
+        }
+        return false;
+    }
     public void moureA(Direccio direccio) {
         Habitacio seguent = posicioActual.getSortida(direccio);
         if (seguent != null) {
