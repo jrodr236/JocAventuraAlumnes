@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class Jugador {
     private Habitacio posicioActual;
-    private List<Item> inventari;
+    public List<Item> inventari;
 
     public Jugador(Habitacio inici) {
 
@@ -28,9 +28,9 @@ public class Jugador {
         }
     }
 
-    public Item getItemInventari(String nomItem) {
+    public Item buscarItem(String nom) {
         for (Item i : inventari) {
-            if (i.getNom().equalsIgnoreCase(nomItem)) {
+            if (i.getNom().equalsIgnoreCase(nom)) {
                 return i;
             }
         }
