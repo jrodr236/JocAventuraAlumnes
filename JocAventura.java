@@ -1,6 +1,4 @@
-
 import java.util.Scanner;
-
 public class JocAventura {
     private HabitacioTancada tencada;
     private Jugador jugador;
@@ -8,16 +6,14 @@ public class JocAventura {
         Habitacio entrada    = new Habitacio("Entrada del Castell", "Una porta de ferro massís bloqueja el camí enrere. Està fosc.");
         Habitacio passadis   = new Habitacio("Passadís Llarg",      "Un passadís ple de teranyines. Sents passes al fons.");
         Habitacio biblioteca = new Habitacio("Biblioteca",           "Milers de llibres vells agafen pols. Hi ha una olor dolça.");
-        Habitacio fosca = new Habitacio_fosca("Fosca",           "Timc po.");
-        tencada= new HabitacioTancada("Tencada","Et trobas davant una porta tencada mes gran que en ratatui, veig que no poseeixes l'objecta necessari per proseguir la teva aventura, dona mitja volta i marxa","clau1");
-
+        Habitacio fosca = new Habitacio("Fosca",           "Timc po.");
+        tencada= new HabitacioTancada("Tencada","Et trobas davant una porta tencada mes gran que en ratatui, veig que no poseeixes l'objecta necessari per proseguir la teva aventura, dona mitja volta i marxa","clau");
 
         // Creem l'ítem i el posem a la biblioteca
         Llanterna llanterna = new Llanterna();
-
         biblioteca.setItem(llanterna);
 
-        Clau clau = new Clau("clau1");
+        Clau clau = new Clau("clau");
         passadis.setItem(clau);
 
         entrada.setSortida(Direccio.NORD, passadis);
@@ -27,7 +23,7 @@ public class JocAventura {
         passadis.setSortida(Direccio.NORD, tencada);
         passadis.setSortida(Direccio.OEST,fosca);
         tencada.setSortida(Direccio.SUD,passadis);
-        fosca.setSortida(Direccio.EST,passadis);
+        fosca.setSortida(Direccio.SUD,passadis);
         this.jugador = new Jugador(entrada);
     }
     public void executar() {
@@ -96,14 +92,41 @@ public class JocAventura {
                 System.out.println("Fins la pròxima!");
                 actiu = false;
                 break;
+            case "usar":
+                if (parts.length > 1) {
+                    String nomItem = parts[1];
+
+                    Item item = jugador.buscarItem(nomItem);
+
+                    if (item instanceof Clau clau) {
+
+                        Habitacio actual = jugador.getPosicioActual();
+
+                        if (actual instanceof HabitacioTancada tancada) {
+
+                            if (tancada.intentarObrir(clau)) {
+                                System.out.println(" Has obert la porta!");
+                            } else {
+                                System.out.println(" Aquesta clau no funciona.");
+                            }
+
+                        } else {
+                            System.out.println("Aquí no hi ha res per obrir.");
+                        }
+
+                    } else {
+                        System.out.println("No tens aquesta clau.");
+                    }
+
+                } else {
+                    System.out.println("Què vols usar?");
+                }
+                break;
+
             default:
                 System.out.println("No sé com fer això.");
                 break;
         }
         return actiu;
     }
-
-
-
-
 }

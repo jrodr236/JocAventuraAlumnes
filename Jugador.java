@@ -28,13 +28,13 @@ public class Jugador {
         }
     }
 
-    public boolean getItemInventari(String nomItem) {
+    public Item buscarItem(String nom) {
         for (Item i : inventari) {
-            if (i.getNom().equals(nomItem)) {
-                return true;
+            if (i.getNom().equalsIgnoreCase(nom)) {
+                return i;
             }
         }
-        return false;
+        return null;
     }
     public void moureA(Direccio direccio) {
         Habitacio seguent = posicioActual.getSortida(direccio);
