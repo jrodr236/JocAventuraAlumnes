@@ -39,7 +39,7 @@ public class Jugador {
         return null;
     }
 
-    public boolean getIteminventari(String nomItem){
+    public boolean getItemInventari(String nomItem){
         for(Item i: inventari){
             if(i.getNom().equals(nomItem)){
                 return true;

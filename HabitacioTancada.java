@@ -39,7 +39,7 @@ public class HabitacioTancada extends Habitacio {
     }
 
     public boolean intentarObrir(Clau clauJugador) {
-        if (this.idClauRequerida.equals(clauJugador.getidPany())) {
+        if (this.idClauRequerida.equals(clauJugador.getIdPany())) {
             this.oberta = true;
             Habitacio passadis2   = new Habitacio("Passadís Curt",      "Un passadís ple de teranyines pero mes curt. Sents passes al fons, pero un fons que esta mes aprop.");
             return true;
