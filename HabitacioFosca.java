@@ -1,17 +1,11 @@
-import java.util.HashMap;
-
 public class HabitacioFosca extends Habitacio {
-
-    private Jugador jugador;
-    private String nom;
-    private String descripcio;
-    private HashMap<Direccio, HabitacioFosca> sortides;
     boolean tiveus = false;
+    private Item itemAmagat;
 
 
-    public HabitacioFosca(String nom, String descripcio, Jugador jugador){
+    public HabitacioFosca(String nom, String descripcio, Item itemAmagat){
         super("Habitacio fosca", "No t'hi veus. Tens po...");
-        this.jugador = jugador;
+        this.itemAmagat = itemAmagat;
     }
 
     public String iluminarHabitacio(Jugador jugador){
@@ -23,10 +17,4 @@ public class HabitacioFosca extends Habitacio {
                     "Sortides visibles: cap";
         }
     }
-
-
-
-    public void IluminarHabitacio(){
-
-    };
 }

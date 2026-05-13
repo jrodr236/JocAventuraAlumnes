@@ -49,12 +49,8 @@ public class JocAventura {
             case "agafar":
                 Item itemHabitacio = jugador.getPosicioActual().getItem();
                 if (itemHabitacio != null) {
-                    if (itemHabitacio.isAgafable()) {
-                        jugador.agafarItem(itemHabitacio);
-                        jugador.getPosicioActual().treureItem();
-                    } else {
-                        System.out.println("No pots agafar això, no es pot moure.");
-                    }
+                    jugador.agafarItem(itemHabitacio);
+                    jugador.getPosicioActual().treureItem();
                 } else {
                     System.out.println("No hi ha res aquí per agafar.");
                 }

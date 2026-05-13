@@ -24,7 +24,11 @@ public class Mapa {
                 "Fosca",
                 "Tinc po."
         );
-        Habitacio tancada = new HabitacioTancada(
+        Habitacio oculta = new Habitacio(
+                "Oculta",
+                "Una habitació meravellosa, però necessites el DLC per a poder-la gaudir."
+        );
+        HabitacioTancada tancada = new HabitacioTancada(
                 "Tancada",
                 "Et trobas davant una porta tancada mes gran que en ratatui, veig que no poseeixes l'objecta necessari per proseguir la teva aventura, dona mitja volta i marxa",
                 "clau"
@@ -34,10 +38,10 @@ public class Mapa {
                 "Una habitació plena de joies i or."
         );
 
-        Llanterna llanterna = new Llanterna();
+        Llanterna llanterna = new Llanterna("Llanterna", "Una llanterna que illumina les habitacions fosques.");
         biblioteca.setItem(llanterna);
 
-        Clau clau = new Clau("clau");
+        Clau clau = new Clau("Clau", "Una clau.", "clau1");
         passadisLlarg.setItem(clau);
 
         entrada.setSortida(Direccio.NORD, passadisLlarg);
@@ -47,6 +51,8 @@ public class Mapa {
         passadisLlarg.setSortida(Direccio.NORD, tancada);
         tancada.setSortida(Direccio.SUD, passadisLlarg);
         tancada.setSortida(Direccio.NORD, passadisCurt);
+        tancada.setSortidaOculta(Direccio.EST, oculta);
+        oculta.setSortida(Direccio.OEST, tancada);
         passadisCurt.setSortida(Direccio.NORD, salaTresor);
         passadisCurt.setSortida(Direccio.SUD, tancada);
         fosca.setSortida(Direccio.EST, passadisLlarg);

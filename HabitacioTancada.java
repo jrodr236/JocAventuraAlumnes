@@ -1,4 +1,4 @@
-
+import java.util.HashMap;
 
 public class HabitacioTancada extends Habitacio {
 
@@ -6,11 +6,19 @@ public class HabitacioTancada extends Habitacio {
     private String idClauRequerida;
     private Item item;
     private Clau clau;
+    private Direccio direccioSortidaTancada;
+    private Habitacio sortidaTancada;
+
 
     public HabitacioTancada(String nom, String descripcio, String idClauRequerida) {
         super(nom, descripcio);
         this.idClauRequerida = idClauRequerida;
         this.oberta = false;
+    }
+
+    public void setSortidaOculta(Direccio direccioSortidaTancada, Habitacio sortidaTancada) {
+        this.direccioSortidaTancada = direccioSortidaTancada;
+        this.sortidaTancada = sortidaTancada;
 
     }
 

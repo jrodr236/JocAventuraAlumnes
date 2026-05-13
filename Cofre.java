@@ -4,7 +4,6 @@ public class Cofre {
     private ArrayList<Item> items;
     private boolean obert;
 
-    // CONSTRUCTOR
     public Cofre() {
         items = new ArrayList<>();
         obert = false;
