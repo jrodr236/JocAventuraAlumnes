@@ -1,15 +1,15 @@
 import java.util.HashMap;
 
-public class Habitacio_fosca extends Habitacio {
+public class HabitacioFosca extends Habitacio {
 
     private Jugador jugador;
     private String nom;
     private String descripcio;
-    private HashMap<Direccio, Habitacio_fosca> sortides;
+    private HashMap<Direccio, HabitacioFosca> sortides;
     boolean tiveus = false;
 
 
-    public Habitacio_fosca(String nom, String descripcio, Jugador jugador){
+    public HabitacioFosca(String nom, String descripcio, Jugador jugador){
         super("Habitacio fosca", "No t'hi veus. Tens po...");
         this.jugador = jugador;
     }
