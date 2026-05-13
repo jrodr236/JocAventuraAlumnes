@@ -45,13 +45,12 @@ public class Mapa {
         passadisLlarg.setSortida(Direccio.EST, biblioteca);
         passadisLlarg.setSortida(Direccio.OEST, fosca);
         passadisLlarg.setSortida(Direccio.NORD, tancada);
-        passadisLlarg.setSortida(Direccio.OEST, fosca);
         tancada.setSortida(Direccio.SUD, passadisLlarg);
         tancada.setSortida(Direccio.NORD, passadisCurt);
         passadisCurt.setSortida(Direccio.NORD, salaTresor);
         passadisCurt.setSortida(Direccio.SUD, tancada);
-        fosca.setSortida(Direccio.SUD, passadisLlarg);
-        passadisLlarg.setSortida(Direccio.SUD, salaTresor);
+        fosca.setSortida(Direccio.EST, passadisLlarg);
+        biblioteca.setSortida(Direccio.OEST, passadisLlarg);
         salaTresor.setSortida(Direccio.SUD, passadisCurt);
     }
 
