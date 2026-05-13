@@ -98,7 +98,7 @@ public class JocAventura {
 
                         Habitacio actual = jugador.getPosicioActual();
 
-                        if (actual instanceof HabitacioTancada tancada) {
+                        if (actual instanceof HabitacioAmbPortaTancada tancada) {
 
                             if (tancada.intentarObrir(clau)) {
                                 System.out.println(" Has obert la porta!");

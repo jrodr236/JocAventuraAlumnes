@@ -22,7 +22,6 @@ public class Habitacio {
         return sortides.get(direccio);
     }
 
-    // Mètodes per gestionar l'ítem
     public void setItem(Item item){
         this.item = item;
     }
