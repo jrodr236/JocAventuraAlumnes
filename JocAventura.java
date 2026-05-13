@@ -52,7 +52,7 @@ public class JocAventura {
                     jugador.agafarItem(itemHabitacio);
                     jugador.getPosicioActual().treureItem();
                 } else {
-                    System.out.println("No hi ha res aquí per agafar.");
+                    System.out.println("No veus res aquí que es pugui agafar.");
                 }
                 break;
 

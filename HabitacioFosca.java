@@ -1,11 +1,8 @@
 public class HabitacioFosca extends Habitacio {
     private boolean illuminada = false;
-    private Item itemAmagat;
 
-
-    public HabitacioFosca(String nom, String descripcio, Item itemAmagat){
+    public HabitacioFosca(String nom, String descripcio){
         super(nom, descripcio);
-        this.itemAmagat = itemAmagat;
     }
 
     // TO DO: canviar per utilitzarItem()
@@ -26,6 +23,16 @@ public class HabitacioFosca extends Habitacio {
         }
         else {
             return super.toString();
+        }
+    }
+
+    @Override
+    public Item getItem(){
+        if (illuminada) {
+            return null;
+        }
+        else {
+            return super.getItem();
         }
     }
 }
