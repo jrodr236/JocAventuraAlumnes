@@ -6,7 +6,7 @@ public class Clau extends Item {
         this.idPany = idPany;
     }
 
-    public String getidPany() {
+    public String getIdPany() {
         return idPany;
     }
 }

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class Jugador {
     private Habitacio posicioActual;
-    public List<Item> inventari;
+    private List<Item> inventari;
 
     public Jugador() {
         this.inventari = new ArrayList<>();
@@ -39,7 +39,7 @@ public class Jugador {
         return null;
     }
 
-    public boolean GetIteminventari(String nomItem){
+    public boolean getIteminventari(String nomItem){
         for(Item i: inventari){
             if(i.getNom().equals(nomItem)){
                 return true;
