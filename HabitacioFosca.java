@@ -28,7 +28,7 @@ public class HabitacioFosca extends Habitacio {
 
     @Override
     public Item getItem(){
-        if (illuminada) {
+        if (!illuminada) {
             return null;
         }
         else {
