@@ -22,7 +22,6 @@ public class Habitacio {
         return sortides.get(direccio);
     }
 
-    // Mètodes per gestionar l'ítem
     public void setItem(Item item){
         this.item = item;
     }
@@ -46,5 +45,9 @@ public class Habitacio {
         return "--- " + nom + " ---\n" +
                 descripcio + textItem + "\n" +
                 "Sortides visibles: " + (sortidesList.length() == 0 ? "cap" : sortidesList);
+    }
+
+    public void utilitzarItem(Item item) {
+        System.out.println(item.getNom() + " no es pot utilitzar aquí.");
     }
 }
