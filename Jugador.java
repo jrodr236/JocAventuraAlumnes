@@ -46,6 +46,7 @@ public class Jugador {
         }
         return false;
     }
+
     public void moureA(Direccio direccio) {
         Habitacio seguent = posicioActual.getSortida(direccio);
         if (seguent != null) {
