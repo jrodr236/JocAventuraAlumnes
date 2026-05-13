@@ -17,10 +17,6 @@ public class HabitacioAmbPortaTancada extends Habitacio {
 
     }
 
-    public boolean getPortaOberta() {
-        return portaOberta;
-    }
-
     // TO DO: canviar per utilitzarItem()
     public boolean intentarObrir(Clau clauJugador) {
         if (this.idClauRequerida.equals(clauJugador.getIdPany())) {
